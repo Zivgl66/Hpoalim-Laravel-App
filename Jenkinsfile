@@ -3,7 +3,7 @@ pipeline {
        environment {
         AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
-        SSH_KEY = credentials('ssh-private-key')
+        SSH_KEY = credentials('ssh-key-id')
         EC2_INSTANCE = '54.158.42.42'
     }
     agent any
