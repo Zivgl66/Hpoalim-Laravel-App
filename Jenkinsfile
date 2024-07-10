@@ -1,8 +1,5 @@
 #!groovy
 pipeline {
-environment {
-
-}
     agent any
 
     stages {
