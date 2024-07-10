@@ -29,11 +29,11 @@ pipeline {
         //     }
         // }
 
-        stage('Install Dependencies') {
-            steps {
-                sh 'composer install --no-ansi --no-interaction --no-progress --optimize-autoloader'
-            }
-        }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         sh 'composer install --no-ansi --no-interaction --no-progress --optimize-autoloader'
+        //     }
+        // }
 
         // stage('Run Tests') {
         //     steps {
