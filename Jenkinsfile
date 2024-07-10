@@ -3,11 +3,11 @@ pipeline {
     agent any
 
     stages {
-        stage('cleanup') {
-            steps {
-                cleanws()
-            }
-        }
+        // stage('cleanup') {
+        //     steps {
+        //         cleanWs()
+        //     }
+        // }
         stage('checkout') {
             steps {
                checkout scmGit(
