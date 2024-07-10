@@ -46,8 +46,8 @@ pipeline {
                         withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key-id', keyFileVariable: 'SSH_KEY')]) {
                             sh '''
 
-                                 ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@$EC2_INSTANCE "sudo rm -rf $APP_PATH/*"
-                                 sudo scp -o StrictHostKeyChecking=no -i $SSH_KEY -r * ubuntu@$EC2_INSTANCE:$APP_PATH/
+                                ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@$EC2_INSTANCE "sudo rm -rf $APP_PATH/*"
+                                 ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@$EC2_INSTANCE "scp -o StrictHostKeyChecking=no -i $SSH_KEY -r * ubuntu@$EC2_INSTANCE:$APP_PATH/"
                                 // ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@$EC2_INSTANCE "cd $APP_PATH && sudo composer install --no-ansi --no-interaction --no-progress --optimize-autoloader && sudo chown -R ubuntu:ubutnu storage bootstrap/cache"
                                 // ssh -o StrictHostKeyChecking=no -i $SSH_KEY ubuntu@$EC2_INSTANCE "sudo systemctl restart apache2.service"
                             '''
