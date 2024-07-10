@@ -3,6 +3,11 @@ pipeline {
     agent any
 
     stages {
+        stage('cleanup') {
+            steps {
+                cleanws()
+            }
+        }
         stage('checkout') {
             steps {
                checkout scmGit(
@@ -12,25 +17,18 @@ pipeline {
                )
             }
         }
-        // stage('Setup') {
+        // stage('Install Dependencies') {
         //     steps {
-        //         echo 'cleaning...'
-        //         sh 'yes | sudo docker system prune -a'
+        //         // Install Composer dependencies
+        //         sh 'composer install --no-dev --optimize-autoloader'
         //     }
         // }
 
-        stage('Install Dependencies') {
-            steps {
-                // Install Composer dependencies
-                sh 'composer install --no-dev --optimize-autoloader'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh 'php artisan test'
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         sh 'php artisan test'
+        //     }
+        // }
 
         stage('Build and Deploy') {
             steps {
