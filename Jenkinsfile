@@ -1,13 +1,26 @@
+#!groovy
 pipeline {
+environment {
+
+}
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('checkout') {
             steps {
-                // Checkout the code from Git
-                git credentialsId: 'git-cred', url: 'https://github.com/Zivgl66/Hpoalim-Laravel-App'
+               checkout scmGit(
+                branches: [[name: "main"]],
+                userRemoteConfigs: [[credentialsId: 'git-cred',
+                url: 'https://github.com/Zivgl66/Hpoalim-Laravel-App.git']]
+               )
             }
         }
+        // stage('Setup') {
+        //     steps {
+        //         echo 'cleaning...'
+        //         sh 'yes | sudo docker system prune -a'
+        //     }
+        // }
 
         stage('Install Dependencies') {
             steps {
